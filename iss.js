@@ -6,21 +6,19 @@ const fetMyIP = (callback) => {
   request(url, (error, response, body) => {
     if (error) {
       console.error('Error:', error);
-      callback(error, null); // Call the callback with an error
+      callback(error, null); 
       return;
     }
   
     if (response.statusCode !== 200) {
       console.error('HTTP Status Code:', response.statusCode);
-      callback('HTTP Status Code: ' + response.statusCode, null); // Call the callback with an error
+      callback('HTTP Status Code: ' + response.statusCode, null);
       return;
     }
   
-    // Parse the JSON string into a JavaScript object
     const data = JSON.parse(body);
   
-    // Now you can access the properties of the JSON object
-    callback(null, data.ip); // Call the callback with the IP address
+    callback(null, data.ip); 
   });
 }
 
@@ -47,28 +45,26 @@ const fetCoordsByIP = (ip, callback) => {
 }
 
 const fetISSFlyoverTimes = (coordinates, callback) => {
-  const longitude = coordinates.longitude 
-  const latitude = coordinates.latitude
-  const url = `https://iss-flyover.herokuapp.com/json/?lat=${latitude}&lon=${longitude}`
+  const longitude = coordinates.longitude;
+  const latitude = coordinates.latitude;
+  const url = `https://iss-flyover.herokuapp.com/json/?lat=${latitude}&lon=${longitude}`;
   
   request(url, (error, response, body) => {
     if (error) {
       console.error('Error:', error);
-      callback(error, null); // Call the callback with an error
+      callback(error, null); 
       return;
     }
   
     if (response.statusCode !== 200) {
       console.error('HTTP Status Code:', response.statusCode);
-      callback('HTTP Status Code: ' + response.statusCode, null); // Call the callback with an error
+      callback('HTTP Status Code: ' + response.statusCode, null); 
       return;
     }
   
-    // Parse the JSON string into a JavaScript object
     const data = JSON.parse(body);
   
-    // Now you can access the properties of the JSON object
-    callback(null, data.response); // Call the callback with the IP address
+    callback(null, data.response);
   });
 }
 
@@ -99,7 +95,7 @@ const nextISSTimesForMyLocation = function(callback) {
     }
   });
 
-  
+
 };
 
 
